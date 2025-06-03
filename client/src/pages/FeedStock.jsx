@@ -55,7 +55,7 @@ const FeedStock = () => {
 
   return (
     <DashboardLayout>
-      <div className="w-full p-6">
+      <div className="w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Add Feed Stock</h2>
           <button
@@ -63,56 +63,58 @@ const FeedStock = () => {
               resetForm();
               setIsModalOpen(true);
             }}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-150 ease-in-out shadow-sm text-sm font-medium"
           >
             Add Stock
           </button>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="table-auto w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border p-2 text-left">Sr.</th>
-                <th className="border p-2 text-left">Feed Type</th>
-                <th className="border p-2 text-left">Stock</th>
-                <th className="border p-2 text-left">Purchase History</th>
-              </tr>
-            </thead>
-            <tbody>
-              {isLoading ? (
-                <tr>
-                  <td colSpan="4" className="border p-2 text-center">
-                    Loading feed stock...
-                  </td>
-                </tr>
-              ) : (
-                feedStocks?.map((feedStock, index) => (
-                  <tr key={feedStock._id} className="hover:bg-gray-50">
-                    <td className="border p-2">{index + 1}</td>
-                    <td className="border p-2">{feedStock.feedType}</td>
-                    <td className="border p-2">
-                      {feedStock.currentStock} KG
-                    </td>
-                    <td className="border p-2 font-semibold">
-                      <button
-                        onClick={() => handleViewHistory(feedStock)}
-                        className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition"
-                      >
-                        View History
-                      </button>
-
-                    </td>
+        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          {isLoading && feedStocks.length === 0 ? (
+            <div className="p-10 text-center text-gray-500">
+              Loading feedStocks data...
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left text-gray-700">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-100 border-b sticky top-0 z-10">
+                  <tr className="bg-gray-100">
+                    <th className="border p-2 text-center">Sr.</th>
+                    <th className="border p-2 text-left">Feed Type</th>
+                    <th className="border p-2 text-left">Stock</th>
+                    <th className="border p-2 text-left">Purchase History</th>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                  {feedStocks?.map((feedStock, index) => (
+                    <tr key={feedStock._id} >
+                      <td className="border p-2 text-center">{index + 1}</td>
+                      <td className="border p-2">{feedStock.feedType}</td>
+                      <td className="border p-2">
+                        {feedStock.currentStock} KG
+                      </td>
+                      <td className="border p-2 font-semibold">
+                        <button
+                          onClick={() => handleViewHistory(feedStock)}
+                          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-150 ease-in-out shadow-sm text-sm font-medium"
+                        >
+                          View History
+                        </button>
+
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
+
+
         {isModalOpen && (
-          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
+          <div className="fixed inset-0 z-40 flex items-start justify-center bg-black bg-opacity-60">
+            <div className="bg-white p-5 rounded-lg shadow-xl max-w-md w-full transform transition-all">
               <h2 className="text-xl font-bold mb-4">
                 Add Feed Stock
               </h2>
@@ -123,7 +125,7 @@ const FeedStock = () => {
                     value={feedType}
                     id="feedType"
                     name="feedType"
-                    className="w-full px-3 py-2 border rounded"
+                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm px-3 py-2"
                     onChange={(e) => setFeedType(e.target.value)}
                   >
                     <option value="Silage">Silage</option>
@@ -142,7 +144,7 @@ const FeedStock = () => {
                     placeholder={`Enter ${feedType} in KG`}
                     value={purchaseWeight}
                     onChange={(e) => setPurchaseWeight(e.target.value)}
-                    className="w-full px-3 py-2 border rounded"
+                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm px-3 py-2"
                   />
                 </div>
 
@@ -156,7 +158,7 @@ const FeedStock = () => {
                     placeholder={`Enter ${feedType} Price Per Kg`}
                     value={purchasePrice}
                     onChange={(e) => setPurchasePrice(e.target.value)}
-                    className="w-full px-3 py-2 border rounded"
+                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm px-3 py-2"
                   />
                 </div>
 
@@ -168,7 +170,7 @@ const FeedStock = () => {
                     name="purchaseDate"
                     value={purchaseDate}
                     onChange={(e) => setPurchaseDate(e.target.value)}
-                    className="w-full px-3 py-2 border rounded"
+                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm px-3 py-2"
                   />
                 </div>
 
@@ -179,13 +181,13 @@ const FeedStock = () => {
                       resetForm();
                       setIsModalOpen(false);
                     }}
-                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition"
+                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+                    className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
                   >
                     Save
                   </button>

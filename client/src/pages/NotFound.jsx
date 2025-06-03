@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 const NotFound = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center p-6 selection:bg-yellow-300 selection:text-yellow-900">
       <div className="bg-white p-8 sm:p-12 rounded-xl shadow-2xl max-w-lg w-full">
         <div className="mb-8">
-     
+
           {/* Option 2: Image
           <img
             src={confusedCowImage} // or "/assets/your-image.png"
@@ -24,7 +24,7 @@ const NotFound = () => {
         </p>
 
         <Link
-          to="/dashboard" 
+          to="/dashboard"
           className="inline-block px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md"
         >
           Back to the Farm (Home)

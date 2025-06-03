@@ -110,8 +110,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/dashboard"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/dashboard"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 mt-2 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/dashboard"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -126,8 +126,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/feeds"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/feeds"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/feeds"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -142,8 +142,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/animals"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/animals"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/animals"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -158,8 +158,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/meditation"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/meditation"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/meditation"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -174,8 +174,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/flock"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/flock"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/flock"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -190,8 +190,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/feed-stock"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/feed-stock"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/feed-stock"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -206,8 +206,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/reports"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/reports"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/reports"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -222,8 +222,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               <NavLink
                 to="/profile"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2 rounded-md transition group ${isActive || activeTab === "/profile"
-                    ? "bg-blue-500 text-white"
+                  `flex items-center gap-3 px-3 mt-2 py-2 rounded-md transition group ${isActive || activeTab === "/profile"
+                    ? "bg-blue-600 text-white"
                     : "text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }
@@ -237,7 +237,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = "default" }) {
               {/* Logout */}
               <button
                 onClick={handleLogout}
-                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md transition group text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700`}
+                className={`w-full flex items-center gap-3 mt-2 px-3 py-2 rounded-md transition group text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700`}
               >
                 <FaSignOutAlt title="Logout" className={`${iconClass} text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300`} />
                 <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">

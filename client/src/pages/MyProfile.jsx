@@ -99,7 +99,7 @@ const MyProfile = () => {
                         <div className="pt-4 border-t mt-6 flex justify-end">
                             <button type="submit"
                                 onClick={handleChangePassword}
-                                className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 shadow-sm flex items-center gap-2">
+                                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 shadow-sm flex items-center gap-2">
                                 <FiLock size={16} /> Change Password
                             </button>
                         </div>
