@@ -23,6 +23,8 @@ const Feeds = () => {
     const paginatedFeeds = feeds.slice(startIndex, startIndex + feedsPerPage);
     const pageCount = Math.ceil(feeds.length / feedsPerPage);
 
+  const today = new Date().toISOString().split('T')[0];
+
     // Form state
     const [flockName, setFlockName] = useState("");
     const [silage, setSilage] = useState("");
@@ -363,6 +365,122 @@ const Feeds = () => {
                     </div>
                 )}
             </div>
+<<<<<<< HEAD
+=======
+
+
+            {/* Modal for Add/Edit Feed */}
+            {isModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+                    <div className="bg-white p-5 rounded-lg shadow-xl w-full max-w-md max-h-[90vh] flex flex-col">
+                        <div className="flex justify-between items-center mb-4 pb-3 border-b">
+                            <h2 className="text-lg font-semibold text-gray-800">
+                                {editingFeedId ? "Edit Feed Record" : "Add New Feed Record"}
+                            </h2>
+                            <button
+                                onClick={() => {
+                                    resetForm();
+                                    setIsModalOpen(false);
+                                }}
+                                className="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100"
+                                title="Close"
+                            >
+                                <FiX size={20} />
+                            </button>
+                        </div>
+                        <form onSubmit={handleSaveFeed} className="flex-grow overflow-y-auto pr-2 space-y-4 custom-scrollbar">
+                            <div>
+                                <label htmlFor="flockName" className="block text-sm font-medium text-gray-700 mb-1">Flock Name <span className="text-red-500">*</span></label>
+                                <select
+                                    id="flockName"
+                                    className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                                    value={flockName}
+                                    onChange={(e) => setFlockName(e.target.value)}
+                                    required
+                                >
+                                    <option value="">Select Flock</option>
+                                    {flocks?.map((flock) => ( // Optional chaining for flocks
+                                        <option key={flock._id} value={flock._id}>
+                                            {flock.flockName}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            {/* Feed Amounts in a Grid */}
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label htmlFor="silage" className="block text-sm font-medium text-gray-700 mb-1">Silage (kg)</label>
+                                    <input
+                                        id="silage" type="number" step="0.1" min="0"
+                                        className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                                        placeholder="0.0" value={silage} onChange={(e) => setSilage(e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="wanda" className="block text-sm font-medium text-gray-700 mb-1">Wanda (kg)</label>
+                                    <input
+                                        id="wanda" type="number" step="0.1" min="0"
+                                        className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                                        placeholder="0.0" value={wanda} onChange={(e) => setWanda(e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="wheatStraw" className="block text-sm font-medium text-gray-700 mb-1">Wheat Straw (kg)</label>
+                                    <input
+                                        id="wheatStraw" type="number" step="0.1" min="0"
+                                        className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                                        placeholder="0.0" value={wheatStraw} onChange={(e) => setWheatStraw(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Date and Time */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label htmlFor="feedTime" className="block text-sm font-medium text-gray-700 mb-1">Feed Time <span className="text-red-500">*</span></label>
+                                    <select
+                                        id="feedTime"
+                                        value={feedTime}
+                                        onChange={(e) => setFeedTime(e.target.value)}
+                                        className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                                        required
+                                    >
+                                        <option value="Morning">Morning</option>
+                                        <option value="Evening">Evening</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label htmlFor="feedDate" className="block text-sm font-medium text-gray-700 mb-1">Feed Date <span className="text-red-500">*</span></label>
+                                    <input
+                                        max={today}
+                                        id="feedDate" type="date"
+                                        className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
+                                        value={feedDate} onChange={(e) => setFeedDate(e.target.value)} required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex justify-end space-x-3 pt-4 border-t mt-auto"> {/* Sticky footer for modal */}
+                                <button
+                                    type="button"
+                                    onClick={() => { resetForm(); setIsModalOpen(false); }}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 border border-gray-300 transition"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition shadow-sm"
+                                >
+                                    {editingFeedId ? "Update Record" : "Save Record"}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+>>>>>>> bff1a09e4c9abd5ff505225ff08984abe2de28ce
         </DashboardLayout>
     );
 };
