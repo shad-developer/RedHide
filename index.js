@@ -9,7 +9,7 @@ const authRoute = require("./routes/AuthRoute");
 const animalRoute = require("./routes/AnimalRoutes");
 const feedStockRoute = require("./routes/FeedStockRoutes");
 const flockRoute = require("./routes/FlockRoutes");
-const AnimalFeedRoute = require("./routes/FeedRoutes");
+const animalFeedRoute = require("./routes/FeedRoutes");
 const medicineRoute = require("./routes/medicineRoutes");
 
 
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://dairy-farm-ry3z-biku.onrender.com",
     credentials: true,
   })
 );
@@ -37,7 +37,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/animal", animalRoute);
 app.use("/api/feedStock", feedStockRoute);
 app.use("/api/flock", flockRoute);
-app.use("/api/feeds", AnimalFeedRoute);
+app.use("/api/feeds", animalFeedRoute);
 app.use("/api/medicine", medicineRoute);
 
 
