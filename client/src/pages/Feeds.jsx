@@ -23,6 +23,8 @@ const Feeds = () => {
     const paginatedFeeds = feeds.slice(startIndex, startIndex + feedsPerPage);
     const pageCount = Math.ceil(feeds.length / feedsPerPage);
 
+  const today = new Date().toISOString().split('T')[0];
+
     // Form state
     const [flockName, setFlockName] = useState("");
     const [silage, setSilage] = useState("");
@@ -334,6 +336,7 @@ const Feeds = () => {
                                 <div>
                                     <label htmlFor="feedDate" className="block text-sm font-medium text-gray-700 mb-1">Feed Date <span className="text-red-500">*</span></label>
                                     <input
+                                        max={today}
                                         id="feedDate" type="date"
                                         className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2"
                                         value={feedDate} onChange={(e) => setFeedDate(e.target.value)} required
